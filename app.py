@@ -7,6 +7,10 @@ class Person:
     def run(self):
         print("run ")
 
+    @classmethod
+    def existential_crisis(cls, msg):
+        return f"Why are we here, just to {msg}"
+
 
 person = Person("daus")
-print(Person.isAlive)
+print(Person.existential_crisis("suffer"))
