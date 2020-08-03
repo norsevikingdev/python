@@ -1,23 +1,3 @@
-# class Person:
-#     isAlive = False
-
-#     def __init__(self, name, age):
-#         self._name = name
-#         self._age = age
-
-#     def run(self):
-#         print("run ")
-
-#     @classmethod
-#     def existential_crisis(cls, msg):
-#         return f"Why are we here, just to {msg}"
-
-#     # static methods doesn't have access to cls
-#     @staticmethod
-#     def add(num1, num2):
-#         return num1 + num2
-
-
 class Player:
     def __init__(self, name="player", hp=100, mana=20, attack=5, defence=2):
         self._name = name.capitalize()  # encapsulation
@@ -28,6 +8,14 @@ class Player:
 
     def run(self, num_of_blocks):
         print(f'{self._name} runs {num_of_blocks} blocks')
+
+    def attack(self):
+        return self._attack
+
+    def take_damage(self, damage):
+        minus_armor = damage - self._defence
+        if(minus_armor > 0):
+            self._hp = self._hp - (damage - self._defence)
 
 
 class Archer(Player):  # inheritance
@@ -42,10 +30,15 @@ class Archer(Player):  # inheritance
         Player.run(self, num_of_blocks)
         print(f'while shooting {self._arrows} arrows')
 
+    def attack(self):
+        return self._attack * self._arrows
 
-player1 = Archer("Archer", arrows=10)
-player2 = Player()
 
-player2.run(1)  # abstraction
-player1.shoot()
-player1.run(10)
+archer1 = Archer("Archer", 250, 10, 2, arrows=10)
+player2 = Player(attack=22)
+
+player2.take_damage(archer1.attack())
+archer1.take_damage(player2.attack())
+
+print(f'{archer1._name} takes {player2.attack() - archer1._defence} damage and current HP is {archer1._hp}')
+print(f'{player2._name} current HP is {player2._hp}')
