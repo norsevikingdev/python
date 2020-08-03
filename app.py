@@ -48,7 +48,7 @@ class Archer(Player):  # inheritance
         return self._attack * (self._bow['dmg'] + self._arrow['dmg'])
 
 
-archer1 = Archer("Archer", attack=1, bow=bows[2])
+archer1 = Archer("Archer", attack=1, bow=bows[1])
 player2 = Player(attack=22)
 
 print(f'{archer1._name} takes {archer1.take_damage(player2.attack())} damage and current HP is {archer1._hp}')
