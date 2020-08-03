@@ -67,9 +67,10 @@ class Melee(Player):
 
 class Mixed(Archer, Melee):
     def __init__(self, name='player', hp=100, mana=20, attack=5, defence=2, bow=bows[0], arrow=arrow_types[0], sword=swords[0]):
-        super().__init__(name=name, hp=hp, mana=mana,
-                         attack=attack, defence=defence, bow=bow, arrow=arrow)
-        self._sword = sword
+        Archer.__init__(self, name=name, hp=hp, mana=mana,
+                        attack=attack, defence=defence, bow=bow, arrow=arrow)
+        Melee.__init__(self, name=name, hp=hp, mana=mana,
+                       attack=attack, defence=defence, sword=sword)
 
 
 archer1 = Archer("Archer", attack=1, bow=bows[1])
