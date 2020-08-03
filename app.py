@@ -20,7 +20,7 @@
 
 class Player:
     def __init__(self, name="player", hp=100, mana=20, attack=5, defence=2):
-        self._name = name.capitalize()
+        self._name = name.capitalize()  # encapsulation
         self._hp = hp
         self._mana = mana
         self._attack = attack
@@ -30,14 +30,22 @@ class Player:
         print(f'{self._name} runs {num_of_blocks} blocks')
 
 
-class Archer(Player):
-    def __init__(self, name='player', hp=100, mana=20, attack=5, defence=2):
+class Archer(Player):  # inheritance
+    def __init__(self, name='player', hp=100, mana=20, attack=5, defence=2, arrows=1):
         super().__init__(name=name, hp=hp, mana=mana, attack=attack, defence=defence)
+        self._arrows = arrows
 
     def shoot(self):
         print(f"{self._name} shoots {self._attack}")
 
+    def run(self, num_of_blocks):  # polymorphism
+        Player.run(self, num_of_blocks)
+        print(f'while shooting {self._arrows} arrows')
 
-player1 = Archer("robin", attack=30)
+
+player1 = Archer("Archer", arrows=10)
+player2 = Player()
+
+player2.run(1)  # abstraction
 player1.shoot()
 player1.run(10)
