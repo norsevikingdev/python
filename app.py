@@ -9,6 +9,11 @@ arrow_types = [
     {'name': 'fire arrows', 'dmg': 3}
 ]
 
+swords = [
+    {'name': 'copper sword', 'dmg': 2},
+    {'name': 'iron sword', 'dmg': 5}
+]
+
 
 class Player:
     def __init__(self, name="player", hp=100, mana=20, attack=5, defence=2):
@@ -38,7 +43,7 @@ class Archer(Player):  # inheritance
         self._arrow = arrow
 
     def shoot(self):
-        print(f"{self._name} shoots {self._attack}")
+        print(f"{self._name} shoots with {self._bow['name']}")
 
     def run(self, num_of_blocks):  # polymorphism
         Player.run(self, num_of_blocks)
@@ -48,8 +53,34 @@ class Archer(Player):  # inheritance
         return self._attack * (self._bow['dmg'] + self._arrow['dmg'])
 
 
+class Melee(Player):
+    def __init__(self, name='player', hp=100, mana=20, attack=5, defence=2, sword=swords[0]):
+        super().__init__(name=name, hp=hp, mana=mana, attack=attack, defence=defence)
+        self._sword = sword
+
+    def attack(self):
+        return self._attack * self._sword['dmg']
+
+    def slash(self):
+        print(f"{self._name} slashs with {self._sword['name']}")
+
+
+class Mixed(Archer, Melee):
+    def __init__(self, name='player', hp=100, mana=20, attack=5, defence=2, bow=bows[0], arrow=arrow_types[0], sword=swords[0]):
+        super().__init__(name=name, hp=hp, mana=mana,
+                         attack=attack, defence=defence, bow=bow, arrow=arrow)
+        self._sword = sword
+
+
 archer1 = Archer("Archer", attack=1, bow=bows[1])
 player2 = Player(attack=22)
+melee1 = Melee("Melee", attack=10, sword=swords[1])
+mixed1 = Mixed("Mixed", sword=swords[1], bow=bows[1])
+mixed1.shoot()
+mixed1.slash()
+
+print(melee1.attack())
+
 
 print(f'{archer1._name} takes {archer1.take_damage(player2.attack())} damage and current HP is {archer1._hp}')
 print(f'{player2._name} takes {player2.take_damage(archer1.attack())} damage and current HP is {player2._hp}')
