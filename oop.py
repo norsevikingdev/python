@@ -73,15 +73,15 @@ class Mixed(Archer, Melee):
                        attack=attack, defence=defence, sword=sword)
 
 
-archer1 = Archer("Archer", attack=1, bow=bows[1])
-print(
-    f'Name: {archer1._name}, HP: {archer1._hp}, MP: {archer1._mana}, Attack: {archer1._attack}, Defense: {archer1._defence}, Bow: {archer1._bow["name"]}, Arrow Type: {archer1._arrow["name"].capitalize()}')
-player2 = Player(attack=22)
-melee1 = Melee("Melee", attack=10, sword=swords[1])
-mixed1 = Mixed("Mixed", sword=swords[1], bow=bows[1])
-mixed1.shoot()
-mixed1.slash()
+# archer1 = Archer("Archer", attack=1, bow=bows[1])
+# print(
+#     f'Name: {archer1._name}, HP: {archer1._hp}, MP: {archer1._mana}, Attack: {archer1._attack}, Defense: {archer1._defence}, Bow: {archer1._bow["name"]}, Arrow Type: {archer1._arrow["name"].capitalize()}')
+# player2 = Player(attack=22)
+# melee1 = Melee("Melee", attack=10, sword=swords[1])
+# mixed1 = Mixed("Mixed", sword=swords[1], bow=bows[1])
+# mixed1.shoot()
+# mixed1.slash()
 
 
-print(f'{archer1._name} takes {archer1.take_damage(player2.attack())} damage and current HP is {archer1._hp}')
-print(f'{player2._name} takes {player2.take_damage(archer1.attack())} damage and current HP is {player2._hp}')
+# print(f'{archer1._name} takes {archer1.take_damage(player2.attack())} damage and current HP is {archer1._hp}')
+# print(f'{player2._name} takes {player2.take_damage(archer1.attack())} damage and current HP is {player2._hp}')
