@@ -9,3 +9,8 @@
 /.vscode
 /.idea
 /__pycache__
+/Lib
+Scripts/
+Lib/
+pyvenv.cfg
+
